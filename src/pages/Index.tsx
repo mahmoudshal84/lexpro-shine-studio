@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import StarRating from "@/components/StarRating";
 import EditorialHeadline from "@/components/EditorialHeadline";
 import DepthCard from "@/components/DepthCard";
+import Eyebrow from "@/components/Eyebrow";
 import { BUSINESS, SQUARE_BOOKING_URL, SERVICES, REVIEWS } from "@/lib/constants";
 import { Shield, Droplets, Paintbrush, SprayCan, Car, Sparkles, ArrowRight } from "lucide-react";
 import heroImg from "@/assets/hero-car.jpg";
@@ -38,6 +39,15 @@ const HomePage = () => {
         {/* Dark overlays */}
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/50" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-background/40" />
+        {/* Noise grain overlay */}
+        <div
+          className="absolute inset-0 z-[1] opacity-[0.03] mix-blend-overlay pointer-events-none"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+            backgroundRepeat: 'repeat',
+            backgroundSize: '256px 256px',
+          }}
+        />
 
         {/* Horizontal light streak */}
         <div
@@ -58,9 +68,7 @@ const HomePage = () => {
         {/* Content */}
         <div className="container relative z-10 pt-24 pb-20">
           <div className="max-w-2xl">
-            <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-4 animate-fade-in">
-              Premium Auto Care
-            </p>
+            <Eyebrow className="animate-fade-in">Premium Auto Care</Eyebrow>
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
               <span className="font-black tracking-tight">LexPro</span>
               <span className="font-light tracking-normal text-foreground/90"> — Lexington's Premier</span>

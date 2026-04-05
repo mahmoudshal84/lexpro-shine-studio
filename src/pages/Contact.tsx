@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import EditorialHeadline from "@/components/EditorialHeadline";
+import Eyebrow from "@/components/Eyebrow";
 import { BUSINESS, SQUARE_BOOKING_URL, SERVICES } from "@/lib/constants";
 import { Phone, MapPin, Clock } from "lucide-react";
 
@@ -17,7 +18,7 @@ const ContactPage = () => {
     <main className="pt-24 pb-16 md:pb-24">
       <div className="container max-w-5xl">
         <div className="text-center mb-14">
-          <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-3">Get In Touch</p>
+          <Eyebrow>Get In Touch</Eyebrow>
           <EditorialHeadline
             as="h1"
             segments={[
