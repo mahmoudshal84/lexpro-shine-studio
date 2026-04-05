@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { BUSINESS } from "@/lib/constants";
+import EditorialHeadline from "@/components/EditorialHeadline";
 import { Shield, Award, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -8,7 +9,14 @@ const AboutPage = () => (
     <div className="container max-w-4xl">
       <div className="text-center mb-14">
         <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-3">Our Story</p>
-        <h1 className="text-4xl md:text-5xl font-black mb-4">About {BUSINESS.name}</h1>
+        <EditorialHeadline
+          as="h1"
+          segments={[
+            { text: "About ", weight: "light" },
+            { text: BUSINESS.name, weight: "bold", accent: true },
+          ]}
+          className="mb-4"
+        />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-5 gap-10 items-start">

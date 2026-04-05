@@ -1,4 +1,5 @@
 import { Shield, Award, Calendar, User, Building2 } from "lucide-react";
+import EditorialHeadline from "@/components/EditorialHeadline";
 
 const certs = [
   {
@@ -24,7 +25,14 @@ const CertificationsPage = () => (
     <div className="container max-w-4xl">
       <div className="text-center mb-14">
         <Shield className="mx-auto text-gold mb-4" size={40} />
-        <h1 className="text-4xl md:text-5xl font-black mb-4">Professional Certifications</h1>
+        <EditorialHeadline
+          as="h1"
+          segments={[
+            { text: "Professional ", weight: "light" },
+            { text: "Certifications", weight: "bold", accent: true },
+          ]}
+          className="mb-4"
+        />
         <p className="text-muted-foreground max-w-lg mx-auto">
           Verified credentials that demonstrate our commitment to excellence and continuous education.
         </p>

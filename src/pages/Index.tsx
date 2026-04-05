@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import StarRating from "@/components/StarRating";
+import EditorialHeadline from "@/components/EditorialHeadline";
 import { BUSINESS, SQUARE_BOOKING_URL, SERVICES, REVIEWS } from "@/lib/constants";
 import { Shield, Droplets, Paintbrush, SprayCan, Car, Sparkles, ArrowRight } from "lucide-react";
 import heroImg from "@/assets/hero-car.jpg";
@@ -96,7 +97,10 @@ const HomePage = () => {
         <div className="container">
           <div className="text-center mb-10">
             <Shield className="mx-auto text-gold mb-4" size={36} />
-            <h2 className="text-2xl md:text-3xl font-bold mb-3">Certified &amp; Accredited</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">
+              <span className="font-extralight text-foreground/85">Certified </span>
+              <span className="font-black">&amp; Accredited</span>
+            </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
               {BUSINESS.name} is operated by a Certified Auto Detailing Professional and Authorized Ceramic Coating Installer.
             </p>
@@ -120,8 +124,13 @@ const HomePage = () => {
       <section className="py-16 md:py-24">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-3">Our Services</h2>
-            <p className="text-muted-foreground max-w-lg mx-auto">From basic washes to premium ceramic coatings, we deliver perfection at every level.</p>
+            <EditorialHeadline
+              segments={[
+                { text: "Our ", weight: "light" },
+                { text: "Services", weight: "bold", accent: true },
+              ]}
+            />
+            <p className="text-muted-foreground max-w-lg mx-auto mt-4">From basic washes to premium ceramic coatings, we deliver perfection at every level.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredServices.map((s) => (
@@ -155,7 +164,13 @@ const HomePage = () => {
               <span className="text-2xl font-bold text-foreground">5.0</span>
               <span className="text-muted-foreground">— {REVIEWS.length} Reviews</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold">What Our Clients Say</h2>
+            <EditorialHeadline
+              segments={[
+                { text: "What Our ", weight: "light" },
+                { text: "Clients", weight: "bold", accent: true },
+                { text: " Say", weight: "light" },
+              ]}
+            />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {featuredReviews.map((r) => (
@@ -180,7 +195,13 @@ const HomePage = () => {
       {/* ABOUT TEASER */}
       <section className="py-16 md:py-24 border-t border-border">
         <div className="container max-w-3xl text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">The LexPro Standard</h2>
+          <EditorialHeadline
+            segments={[
+              { text: "The LexPro ", weight: "light" },
+              { text: "Standard", weight: "bold", accent: true },
+            ]}
+            className="mb-6"
+          />
           <p className="text-lg text-silver leading-relaxed mb-4">
             Founded by {BUSINESS.owner}, {BUSINESS.name} was built on a simple belief: every vehicle deserves the same level of care and precision that goes into the world's finest automobiles.
           </p>

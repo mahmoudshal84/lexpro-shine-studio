@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import StarRating from "@/components/StarRating";
+import EditorialHeadline from "@/components/EditorialHeadline";
 import { REVIEWS } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 
@@ -29,7 +30,14 @@ const ReviewsPage = () => {
             <span className="text-3xl font-black text-foreground">{avg}</span>
           </div>
           <p className="text-muted-foreground">{filtered.length} Reviews</p>
-          <h1 className="text-4xl md:text-5xl font-black mt-2">Client Reviews</h1>
+          <EditorialHeadline
+            as="h1"
+            segments={[
+              { text: "Client ", weight: "light" },
+              { text: "Reviews", weight: "bold", accent: true },
+            ]}
+            className="mt-2"
+          />
         </div>
 
         {/* Filter */}
