@@ -9,16 +9,11 @@ import { Shield, Droplets, Paintbrush, SprayCan, Car, Sparkles, ArrowRight } fro
 import heroImg from "@/assets/hero-car.jpg";
 
 const serviceIcons: Record<string, React.ReactNode> = {
-  wash: <Droplets size={28} />,
-  interior: <SprayCan size={28} />,
-  exterior: <Car size={28} />,
-  complete: <Sparkles size={28} />,
-  paint: <Paintbrush size={28} />,
-  coating: <Shield size={28} />,
+  package: <Sparkles size={28} />,
 };
 
 const HomePage = () => {
-  const featuredServices = SERVICES.slice(0, 6);
+  const featuredServices = SERVICES.slice(0, 4);
   const featuredReviews = REVIEWS.slice(0, 3);
 
   return (
@@ -141,7 +136,7 @@ const HomePage = () => {
             />
             <p className="text-muted-foreground max-w-lg mx-auto mt-4">From basic washes to premium ceramic coatings, we deliver perfection at every level.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {featuredServices.map((s) => (
               <DepthCard key={s.name}>
                 <div className="text-primary mb-4 group-hover:text-accent transition-colors">

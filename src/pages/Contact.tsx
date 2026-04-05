@@ -39,7 +39,7 @@ const ContactPage = () => {
                 <Phone size={18} className="text-primary" /> {BUSINESS.phone}
               </a>
               <div className="flex items-center gap-3 text-muted-foreground">
-                <MapPin size={18} className="text-primary" /> {BUSINESS.location}
+                <MapPin size={18} className="text-primary" /> {BUSINESS.address}
               </div>
             </div>
 
