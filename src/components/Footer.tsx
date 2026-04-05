@@ -1,72 +1,118 @@
 import { Link } from "react-router-dom";
 import { BUSINESS, SQUARE_BOOKING_URL } from "@/lib/constants";
-import { Phone, MapPin, Shield } from "lucide-react";
+import { Phone, MapPin, Clock } from "lucide-react";
+
+const navLinks = [
+  { label: "Home", to: "/" },
+  { label: "Services", to: "/services" },
+  { label: "Certifications", to: "/certifications" },
+  { label: "Reviews", to: "/reviews" },
+  { label: "About", to: "/about" },
+  { label: "Contact", to: "/contact" },
+];
 
 const Footer = () => (
-  <footer className="border-t border-border bg-card/50">
-    <div className="container py-12 md:py-16">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-        {/* Brand */}
+  <footer className="relative overflow-hidden" style={{ background: 'hsl(var(--background))' }}>
+    {/* Top border gradient */}
+    <div
+      className="absolute top-0 left-0 right-0 h-[1px]"
+      style={{ background: 'linear-gradient(90deg, transparent 0%, hsl(var(--primary)) 50%, transparent 100%)' }}
+    />
+
+    {/* Watermark */}
+    <div
+      className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
+      aria-hidden="true"
+    >
+      <span
+        className="text-[6rem] sm:text-[8rem] md:text-[10rem] font-black uppercase whitespace-nowrap leading-none"
+        style={{
+          color: 'hsl(var(--foreground) / 0.03)',
+          letterSpacing: '-0.02em',
+        }}
+      >
+        Lexington's Premier Auto Spa
+      </span>
+    </div>
+
+    <div className="container relative z-10 py-14 md:py-20">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+        {/* Col 1: Brand + Tagline */}
         <div>
-          <h3 className="text-xl font-black text-foreground mb-4">{BUSINESS.name}</h3>
-          <p className="text-muted-foreground text-sm leading-relaxed">
-            Lexington's premier auto detailing studio. Certified professionals delivering showroom-quality results.
+          <h3 className="text-2xl font-black text-foreground mb-2">{BUSINESS.name}</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-xs">
+            Certified professionals delivering showroom-quality results. Ceramic coatings, paint correction, and premium detailing in Lexington, KY.
           </p>
+          <a
+            href={SQUARE_BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-accent transition-colors"
+          >
+            Book an Appointment →
+          </a>
         </div>
 
-        {/* Quick Links */}
+        {/* Col 2: Navigation */}
         <div>
-          <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">Quick Links</h4>
-          <nav className="flex flex-col gap-2">
-            {[
-              { label: "Services", to: "/services" },
-              { label: "Certifications", to: "/certifications" },
-              { label: "Reviews", to: "/reviews" },
-              { label: "About", to: "/about" },
-              { label: "Contact", to: "/contact" },
-            ].map((l) => (
-              <Link key={l.to} to={l.to} className="text-sm text-muted-foreground hover:text-accent transition-colors">
+          <h4
+            className="uppercase font-semibold mb-5 flex items-center gap-2"
+            style={{ fontSize: '11px', letterSpacing: '0.15em', color: 'hsl(var(--accent))' }}
+          >
+            <span className="inline-block w-[2px] h-4 rounded-full" style={{ background: 'hsl(var(--primary))' }} />
+            Navigation
+          </h4>
+          <nav className="grid grid-cols-2 gap-x-6 gap-y-2.5">
+            {navLinks.map((l) => (
+              <Link
+                key={l.to}
+                to={l.to}
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
                 {l.label}
               </Link>
             ))}
           </nav>
         </div>
 
-        {/* Contact */}
+        {/* Col 3: Contact + Hours */}
         <div>
-          <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">Contact</h4>
-          <div className="flex flex-col gap-3 text-sm text-muted-foreground">
-            <a href={BUSINESS.phoneHref} className="flex items-center gap-2 hover:text-accent transition-colors">
-              <Phone size={14} /> {BUSINESS.phone}
+          <h4
+            className="uppercase font-semibold mb-5 flex items-center gap-2"
+            style={{ fontSize: '11px', letterSpacing: '0.15em', color: 'hsl(var(--accent))' }}
+          >
+            <span className="inline-block w-[2px] h-4 rounded-full" style={{ background: 'hsl(var(--primary))' }} />
+            Contact &amp; Hours
+          </h4>
+          <div className="space-y-3 text-sm text-muted-foreground">
+            <a href={BUSINESS.phoneHref} className="flex items-center gap-2.5 hover:text-accent transition-colors">
+              <Phone size={14} className="text-primary shrink-0" />
+              {BUSINESS.phone}
             </a>
-            <span className="flex items-center gap-2">
-              <MapPin size={14} /> {BUSINESS.location}
+            <span className="flex items-center gap-2.5">
+              <MapPin size={14} className="text-primary shrink-0" />
+              {BUSINESS.location}
             </span>
-            <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent transition-colors font-medium">
-              Book an Appointment →
-            </a>
-          </div>
-        </div>
-
-        {/* Credentials */}
-        <div>
-          <h4 className="text-sm font-semibold text-foreground uppercase tracking-wider mb-4">Credentials</h4>
-          <div className="flex flex-col gap-3">
-            {[
-              "Jade Ceramic Authorized Installer 2026",
-              "Certified Detailer – The Detail Czar",
-            ].map((badge) => (
-              <div key={badge} className="flex items-start gap-2 text-sm">
-                <Shield size={14} className="text-gold mt-0.5 shrink-0" />
-                <span className="text-muted-foreground">{badge}</span>
+            <div className="flex items-start gap-2.5 pt-1">
+              <Clock size={14} className="text-primary shrink-0 mt-0.5" />
+              <div className="leading-relaxed">
+                <p>Mon – Fri: 8 AM – 6 PM</p>
+                <p>Sat: 9 AM – 4 PM</p>
+                <p>Sun: Closed</p>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="mt-10 pt-6 border-t border-border text-center text-xs text-muted-foreground">
-        {BUSINESS.copyright}. All rights reserved.
+      {/* Bottom bar */}
+      <div className="mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground"
+        style={{ borderTop: '1px solid hsl(var(--border))' }}
+      >
+        <span>{BUSINESS.copyright}. All rights reserved.</span>
+        <span className="flex items-center gap-1.5 text-muted-foreground/70">
+          Jade Ceramic Authorized · Detail Czar Certified
+        </span>
       </div>
     </div>
   </footer>
