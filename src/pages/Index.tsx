@@ -22,26 +22,67 @@ const HomePage = () => {
     <main>
       {/* HERO */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={heroImg} alt="Premium auto detailing" className="w-full h-full object-cover" width={1920} height={1080} />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/30" />
+        {/* Parallax background image */}
+        <div className="absolute inset-0 scale-110" style={{ willChange: 'transform' }}>
+          <img
+            src={heroImg}
+            alt="Premium auto detailing"
+            className="w-full h-full object-cover"
+            width={1920}
+            height={1080}
+            style={{ animation: 'heroParallax 20s ease-in-out infinite alternate' }}
+          />
         </div>
+        {/* Dark overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-background/40" />
+
+        {/* Horizontal light streak */}
+        <div
+          className="absolute left-0 right-0 h-[1px] top-[45%] z-[5]"
+          style={{
+            background: 'linear-gradient(90deg, transparent 0%, transparent 10%, hsl(var(--accent) / 0.4) 30%, hsl(var(--primary-foreground) / 0.6) 50%, hsl(var(--accent) / 0.4) 70%, transparent 90%, transparent 100%)',
+            animation: 'lightStreak 4s ease-in-out infinite',
+          }}
+        />
+        <div
+          className="absolute left-0 right-0 h-[3px] top-[45%] z-[4] blur-sm"
+          style={{
+            background: 'linear-gradient(90deg, transparent 0%, transparent 15%, hsl(var(--primary) / 0.3) 35%, hsl(var(--accent) / 0.2) 50%, hsl(var(--primary) / 0.3) 65%, transparent 85%, transparent 100%)',
+            animation: 'lightStreak 4s ease-in-out infinite',
+          }}
+        />
+
+        {/* Content */}
         <div className="container relative z-10 pt-24 pb-20">
           <div className="max-w-2xl">
-            <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-4 animate-fade-in">Premium Auto Care</p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
-              Lexington's Premier{" "}
-              <span className="gradient-text">Auto Detailing</span>{" "}
-              Studio
+            <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-4 animate-fade-in">
+              Premium Auto Care
+            </p>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+              <span className="font-black tracking-tight">LexPro</span>
+              <span className="font-light tracking-normal text-foreground/90"> — Lexington's Premier</span>
+              <br />
+              <span className="gradient-text font-black">Auto Detailing</span>{" "}
+              <span className="font-light tracking-normal text-foreground/90">Studio</span>
             </h1>
-            <p className="text-lg md:text-xl text-silver leading-relaxed mb-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <p className="text-lg md:text-xl text-silver leading-relaxed mb-10 animate-fade-in" style={{ animationDelay: "0.2s" }}>
               Ceramic coatings, paint correction, and full detail packages — done right.
             </p>
             <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer">
-                <Button size="xl" variant="hero">Book Appointment</Button>
-              </a>
+              {/* CTA with pulsing gradient glow */}
+              <div className="relative group">
+                <div
+                  className="absolute -inset-1 rounded-xl opacity-60 blur-lg group-hover:opacity-80 transition-opacity duration-500"
+                  style={{
+                    background: 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)))',
+                    animation: 'ctaGlow 3s ease-in-out infinite',
+                  }}
+                />
+                <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="relative">
+                  <Button size="xl" variant="hero">Book Appointment</Button>
+                </a>
+              </div>
               <Link to="/services">
                 <Button size="xl" variant="ghost">View Services</Button>
               </Link>
