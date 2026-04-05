@@ -89,9 +89,9 @@ const Footer = () => (
               <Phone size={14} className="text-primary shrink-0" />
               {BUSINESS.phone}
             </a>
-            <span className="flex items-center gap-2.5">
-              <MapPin size={14} className="text-primary shrink-0" />
-              {BUSINESS.location}
+            <span className="flex items-start gap-2.5">
+              <MapPin size={14} className="text-primary shrink-0 mt-0.5" />
+              {BUSINESS.address}
             </span>
             <div className="flex items-start gap-2.5 pt-1">
               <Clock size={14} className="text-primary shrink-0 mt-0.5" />
