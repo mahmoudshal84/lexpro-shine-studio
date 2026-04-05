@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import EditorialHeadline from "@/components/EditorialHeadline";
 import DepthCard from "@/components/DepthCard";
+import Eyebrow from "@/components/Eyebrow";
 import { SERVICES, SQUARE_BOOKING_URL } from "@/lib/constants";
 import { Droplets, Paintbrush, SprayCan, Car, Sparkles, Shield } from "lucide-react";
 
@@ -17,7 +18,7 @@ const ServicesPage = () => (
   <main className="pt-24 pb-16 md:pb-24">
     <div className="container">
       <div className="text-center mb-14">
-        <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-3">What We Offer</p>
+        <Eyebrow>What We Offer</Eyebrow>
         <EditorialHeadline
           as="h1"
           segments={[
