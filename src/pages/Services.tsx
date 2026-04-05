@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import EditorialHeadline from "@/components/EditorialHeadline";
+import DepthCard from "@/components/DepthCard";
 import { SERVICES, SQUARE_BOOKING_URL } from "@/lib/constants";
 import { Droplets, Paintbrush, SprayCan, Car, Sparkles, Shield } from "lucide-react";
 
@@ -30,7 +31,7 @@ const ServicesPage = () => (
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {SERVICES.map((s) => (
-          <div key={s.name} className="glass rounded-xl p-6 card-hover group flex flex-col">
+          <DepthCard key={s.name} className="flex flex-col">
             <div className="text-primary mb-3 group-hover:text-accent transition-colors">
               {iconMap[s.category] || <Sparkles size={24} />}
             </div>
@@ -40,7 +41,7 @@ const ServicesPage = () => (
             <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="mt-5">
               <Button className="w-full" size="sm">Book This Service</Button>
             </a>
-          </div>
+          </DepthCard>
         ))}
       </div>
     </div>

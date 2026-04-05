@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import StarRating from "@/components/StarRating";
 import EditorialHeadline from "@/components/EditorialHeadline";
+import DepthCard from "@/components/DepthCard";
 import { BUSINESS, SQUARE_BOOKING_URL, SERVICES, REVIEWS } from "@/lib/constants";
 import { Shield, Droplets, Paintbrush, SprayCan, Car, Sparkles, ArrowRight } from "lucide-react";
 import heroImg from "@/assets/hero-car.jpg";
@@ -134,7 +135,7 @@ const HomePage = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredServices.map((s) => (
-              <div key={s.name} className="glass rounded-xl p-6 card-hover group">
+              <DepthCard key={s.name}>
                 <div className="text-primary mb-4 group-hover:text-accent transition-colors">
                   {serviceIcons[s.category] || <Sparkles size={28} />}
                 </div>
@@ -144,7 +145,7 @@ const HomePage = () => {
                 <Link to="/services" className="text-sm font-medium text-primary hover:text-accent transition-colors inline-flex items-center gap-1">
                   Learn More <ArrowRight size={14} />
                 </Link>
-              </div>
+              </DepthCard>
             ))}
           </div>
           <div className="text-center mt-10">
@@ -174,14 +175,14 @@ const HomePage = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {featuredReviews.map((r) => (
-              <div key={r.name} className="glass rounded-xl p-6 card-hover">
+              <DepthCard key={r.name}>
                 <StarRating rating={r.rating} />
                 <p className="text-sm text-muted-foreground mt-4 mb-4 leading-relaxed italic">"{r.text}"</p>
                 <div>
                   <p className="font-semibold text-foreground text-sm">{r.name}</p>
                   <p className="text-xs text-muted-foreground">{r.service} · {r.date}</p>
                 </div>
-              </div>
+              </DepthCard>
             ))}
           </div>
           <div className="text-center mt-10">
