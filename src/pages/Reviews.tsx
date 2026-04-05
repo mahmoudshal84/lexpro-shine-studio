@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import StarRating from "@/components/StarRating";
 import EditorialHeadline from "@/components/EditorialHeadline";
+import DepthCard from "@/components/DepthCard";
 import { REVIEWS } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 
@@ -60,7 +61,7 @@ const ReviewsPage = () => {
         {/* Reviews grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {paginated.map((r, i) => (
-            <div key={i} className="glass rounded-xl p-6 card-hover">
+            <DepthCard key={i}>
               <StarRating rating={r.rating} />
               <p className="text-sm text-muted-foreground mt-4 mb-4 leading-relaxed italic">"{r.text}"</p>
               <div className="flex items-center justify-between">
@@ -70,7 +71,7 @@ const ReviewsPage = () => {
                 </div>
                 <span className="text-xs text-muted-foreground">{r.date}</span>
               </div>
-            </div>
+            </DepthCard>
           ))}
         </div>
 
