@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import EditorialHeadline from "@/components/EditorialHeadline";
 import { SERVICES, SQUARE_BOOKING_URL } from "@/lib/constants";
 import { Droplets, Paintbrush, SprayCan, Car, Sparkles, Shield } from "lucide-react";
 
@@ -16,7 +17,14 @@ const ServicesPage = () => (
     <div className="container">
       <div className="text-center mb-14">
         <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-3">What We Offer</p>
-        <h1 className="text-4xl md:text-5xl font-black mb-4">Our Services</h1>
+        <EditorialHeadline
+          as="h1"
+          segments={[
+            { text: "Our ", weight: "light" },
+            { text: "Services", weight: "bold", accent: true },
+          ]}
+          className="mb-4"
+        />
         <p className="text-muted-foreground max-w-lg mx-auto">Premium packages tailored to every level of care your vehicle needs.</p>
       </div>
 

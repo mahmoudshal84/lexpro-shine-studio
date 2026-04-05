@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import EditorialHeadline from "@/components/EditorialHeadline";
 import { BUSINESS, SQUARE_BOOKING_URL, SERVICES } from "@/lib/constants";
 import { Phone, MapPin, Clock } from "lucide-react";
 
@@ -17,7 +18,14 @@ const ContactPage = () => {
       <div className="container max-w-5xl">
         <div className="text-center mb-14">
           <p className="text-accent font-semibold tracking-widest uppercase text-sm mb-3">Get In Touch</p>
-          <h1 className="text-4xl md:text-5xl font-black mb-4">Contact & Book</h1>
+          <EditorialHeadline
+            as="h1"
+            segments={[
+              { text: "Contact ", weight: "light" },
+              { text: "& Book", weight: "bold", accent: true },
+            ]}
+            className="mb-4"
+          />
           <p className="text-muted-foreground">Ready for a transformation? Book online or send us a message.</p>
         </div>
 
