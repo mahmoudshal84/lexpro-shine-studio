@@ -5,23 +5,44 @@ import EditorialHeadline from "@/components/EditorialHeadline";
 import Eyebrow from "@/components/Eyebrow";
 import { BUSINESS, SERVICE_CATEGORIES } from "@/lib/constants";
 import { Phone, MapPin, Clock, Mail } from "lucide-react";
+import { toast } from "sonner";
 
-const ALL_SERVICES = SERVICE_CATEGORIES.flatMap((cat) =>
-  cat.services.map((s) => ({ name: s.name, category: cat.title }))
-);
+const WEB3FORMS_KEY = "fe9a3c95-63f2-4b24-b7a7-c32d8a2fc5af";
 
 const ContactPage = () => {
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`New Inquiry: ${form.service || "General"}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nPhone: ${form.phone}\nEmail: ${form.email}\nService: ${form.service}\n\nMessage:\n${form.message}`
-    );
-    window.location.href = `mailto:lexproautospa@gmail.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    setLoading(true);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          name: form.name,
+          phone: form.phone,
+          email: form.email,
+          service: form.service,
+          message: form.message,
+          subject: `New Inquiry: ${form.service || "General"}`,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+        toast.success("Message sent successfully!");
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } catch {
+      toast.error("Failed to send. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -127,7 +148,12 @@ const ContactPage = () => {
                     placeholder="Tell us about your vehicle and what you need..."
                   />
                 </div>
-                <Button type="submit" className="w-full" size="lg">Send Message</Button>
+                <Button type="submit" className="w-full" size="lg" disabled={loading}>
+                  {loading ? "Sending..." : "Send Message"}
+                </Button>
+                <p className="text-xs text-muted-foreground text-center mt-3">
+                  Form submissions will be sent to lexproautospa@gmail.com
+                </p>
               </form>
             )}
           </div>
