@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import EditorialHeadline from "@/components/EditorialHeadline";
 import DepthCard from "@/components/DepthCard";
 import Eyebrow from "@/components/Eyebrow";
-import { SERVICE_CATEGORIES, SQUARE_BOOKING_URL, PRICING_DISCLAIMER } from "@/lib/constants";
+import { SERVICE_CATEGORIES, PRICING_DISCLAIMER } from "@/lib/constants";
 import { Droplets, Paintbrush, Sparkles, Shield, Wrench, AlertCircle } from "lucide-react";
 
 const categoryIcons: Record<string, React.ReactNode> = {
