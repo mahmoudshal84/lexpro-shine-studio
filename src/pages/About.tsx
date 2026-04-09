@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { BUSINESS } from "@/lib/constants";
 import EditorialHeadline from "@/components/EditorialHeadline";
 import Eyebrow from "@/components/Eyebrow";
-import { Shield, Award, User } from "lucide-react";
+import { Shield, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const AboutPage = () => (
@@ -20,19 +20,9 @@ const AboutPage = () => (
         />
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-10 items-start">
-        {/* Photo placeholder */}
-        <div className="md:col-span-2">
-          <div className="aspect-[3/4] rounded-2xl glass overflow-hidden flex items-center justify-center">
-            <div className="text-center p-6">
-              <User className="mx-auto text-muted-foreground mb-3" size={48} />
-              <p className="text-sm text-muted-foreground">Photo of {BUSINESS.owner}</p>
-            </div>
-          </div>
-        </div>
-
+      <div className="grid grid-cols-1 gap-10 items-start">
         {/* Content */}
-        <div className="md:col-span-3">
+        <div className="md:col-span-5">
           <h2 className="text-2xl font-bold mb-4">Meet {BUSINESS.owner}</h2>
           <div className="space-y-4 text-muted-foreground leading-relaxed">
             <p>
