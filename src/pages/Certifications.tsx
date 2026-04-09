@@ -1,5 +1,7 @@
 import { Shield, Award, Calendar, User, Building2 } from "lucide-react";
 import EditorialHeadline from "@/components/EditorialHeadline";
+import certJade from "@/assets/cert-jade.jpg";
+import certCzar from "@/assets/cert-czar.jpg";
 
 const certs = [
   {
