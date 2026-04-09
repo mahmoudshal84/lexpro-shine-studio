@@ -52,9 +52,9 @@ const Header = () => {
               {l.label}
             </Link>
           ))}
-          <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="ml-3">
+          <Link to="/booking" className="ml-3">
             <Button size="sm">Book Now</Button>
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile toggle */}
@@ -81,9 +81,9 @@ const Header = () => {
               {l.label}
             </Link>
           ))}
-          <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="block mt-4">
+          <Link to="/booking" className="block mt-4">
             <Button className="w-full">Book Now</Button>
-          </a>
+          </Link>
         </nav>
       )}
     </header>
