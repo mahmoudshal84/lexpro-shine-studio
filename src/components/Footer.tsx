@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { BUSINESS, SQUARE_BOOKING_URL } from "@/lib/constants";
-import { Phone, MapPin, Clock } from "lucide-react";
+import { BUSINESS } from "@/lib/constants";
+import { Phone, MapPin, Clock, Mail } from "lucide-react";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -43,14 +43,12 @@ const Footer = () => (
           <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-xs">
             Certified professionals delivering showroom-quality results. Ceramic coatings, paint correction, and premium detailing in Lexington, KY.
           </p>
-          <a
-            href={SQUARE_BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/booking"
             className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-accent transition-colors"
           >
             Book an Appointment →
-          </a>
+          </Link>
         </div>
 
         {/* Col 2: Navigation */}
@@ -88,6 +86,10 @@ const Footer = () => (
             <a href={BUSINESS.phoneHref} className="flex items-center gap-2.5 hover:text-accent transition-colors">
               <Phone size={14} className="text-primary shrink-0" />
               {BUSINESS.phone}
+            </a>
+            <a href="mailto:lexproautospa@gmail.com" className="flex items-center gap-2.5 hover:text-accent transition-colors">
+              <Mail size={14} className="text-primary shrink-0" />
+              lexproautospa@gmail.com
             </a>
             <span className="flex items-start gap-2.5">
               <MapPin size={14} className="text-primary shrink-0 mt-0.5" />

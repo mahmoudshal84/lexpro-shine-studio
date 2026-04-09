@@ -1,9 +1,14 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import EditorialHeadline from "@/components/EditorialHeadline";
 import Eyebrow from "@/components/Eyebrow";
-import { BUSINESS, SQUARE_BOOKING_URL, SERVICES } from "@/lib/constants";
-import { Phone, MapPin, Clock } from "lucide-react";
+import { BUSINESS, SERVICE_CATEGORIES } from "@/lib/constants";
+import { Phone, MapPin, Clock, Mail } from "lucide-react";
+
+const ALL_SERVICES = SERVICE_CATEGORIES.flatMap((cat) =>
+  cat.services.map((s) => ({ name: s.name, category: cat.title }))
+);
 
 const ContactPage = () => {
   const [form, setForm] = useState({ name: "", phone: "", email: "", service: "", message: "" });
@@ -11,6 +16,11 @@ const ContactPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const subject = encodeURIComponent(`New Inquiry: ${form.service || "General"}`);
+    const body = encodeURIComponent(
+      `Name: ${form.name}\nPhone: ${form.phone}\nEmail: ${form.email}\nService: ${form.service}\n\nMessage:\n${form.message}`
+    );
+    window.location.href = `mailto:lexproautospa@gmail.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
 
@@ -31,12 +41,15 @@ const ContactPage = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          {/* Left: Info + Square Embed */}
+          {/* Left: Info */}
           <div className="space-y-8">
             <div className="glass rounded-xl p-6 space-y-4">
               <h3 className="font-bold text-foreground text-lg">Contact Info</h3>
               <a href={BUSINESS.phoneHref} className="flex items-center gap-3 text-muted-foreground hover:text-accent transition-colors">
                 <Phone size={18} className="text-primary" /> {BUSINESS.phone}
+              </a>
+              <a href="mailto:lexproautospa@gmail.com" className="flex items-center gap-3 text-muted-foreground hover:text-accent transition-colors">
+                <Mail size={18} className="text-primary" /> lexproautospa@gmail.com
               </a>
               <div className="flex items-center gap-3 text-muted-foreground">
                 <MapPin size={18} className="text-primary" /> {BUSINESS.address}
@@ -54,16 +67,13 @@ const ContactPage = () => {
               </div>
             </div>
 
-            {/* Square Booking Widget Placeholder */}
-            <div className="glass rounded-xl p-6">
+            {/* Book Now */}
+            <div className="glass rounded-xl p-6 text-center">
               <h3 className="font-bold text-foreground text-lg mb-4">Book Online</h3>
-              <div className="border-2 border-dashed border-border rounded-lg p-10 text-center">
-                <p className="text-muted-foreground text-sm mb-4">Square Booking Widget</p>
-                <p className="text-xs text-muted-foreground mb-4">Paste your Square Appointments embed code here</p>
-                <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer">
-                  <Button>Book on Square</Button>
-                </a>
-              </div>
+              <p className="text-sm text-muted-foreground mb-5">Schedule your appointment in just a few clicks.</p>
+              <Link to="/booking">
+                <Button size="lg" className="w-full">Book Now</Button>
+              </Link>
             </div>
           </div>
 
@@ -98,8 +108,12 @@ const ContactPage = () => {
                     className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
                   >
                     <option value="">Select a service</option>
-                    {SERVICES.map((s) => (
-                      <option key={s.name} value={s.name}>{s.name} — {s.price}</option>
+                    {SERVICE_CATEGORIES.map((cat) => (
+                      <optgroup key={cat.title} label={cat.title}>
+                        {cat.services.map((s) => (
+                          <option key={s.name} value={s.name}>{s.name} — {s.pricing}</option>
+                        ))}
+                      </optgroup>
                     ))}
                   </select>
                 </div>

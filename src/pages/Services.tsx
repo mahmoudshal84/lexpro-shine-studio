@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import EditorialHeadline from "@/components/EditorialHeadline";
 import DepthCard from "@/components/DepthCard";
 import Eyebrow from "@/components/Eyebrow";
-import { SERVICE_CATEGORIES, SQUARE_BOOKING_URL, PRICING_DISCLAIMER } from "@/lib/constants";
-import { Droplets, Paintbrush, Sparkles, Shield, Wrench, AlertCircle } from "lucide-react";
+import { SERVICE_CATEGORIES, PRICING_DISCLAIMER } from "@/lib/constants";
+import { Paintbrush, Sparkles, Shield, Wrench, AlertCircle } from "lucide-react";
 
 const categoryIcons: Record<string, React.ReactNode> = {
   package: <Sparkles size={24} />,
@@ -43,9 +44,9 @@ const ServicesPage = () => (
                 <p className="text-sm font-semibold gradient-text mt-1 mb-3 leading-relaxed">{s.pricing}</p>
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1">{s.description}</p>
                 {s.pricing !== "Coming Soon" && (
-                  <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="mt-5">
+                  <Link to="/booking" className="mt-5">
                     <Button className="w-full" size="sm">Book This Service</Button>
-                  </a>
+                  </Link>
                 )}
                 {s.pricing === "Coming Soon" && (
                   <div className="mt-5">
