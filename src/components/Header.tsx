@@ -33,8 +33,8 @@ const Header = () => {
       }`}
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
-        <Link to="/" className="text-xl md:text-2xl font-black tracking-tight text-foreground">
-          {BUSINESS.name}
+        <Link to="/" className="flex items-center">
+          <img src="/mainlogo.jpeg" alt={BUSINESS.name} className="h-10 md:h-12 w-auto object-contain" />
         </Link>
 
         {/* Desktop nav */}
