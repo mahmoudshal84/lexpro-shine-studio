@@ -11,6 +11,7 @@ const certs = [
     company: "LexPro Auto Spa",
     date: "02/15/2026",
     badge: "Authorized Installer – Certified 2026",
+    image: certJade,
   },
   {
     title: "Certified Detailer Licensee",
@@ -19,6 +20,7 @@ const certs = [
     company: "The Detail Czar",
     date: "February 2026",
     badge: "Trainer: Nicholas Vacco – Detail Czar Certified Trainer",
+    image: certCzar,
   },
 ];
 
@@ -72,8 +74,8 @@ const CertificationsPage = () => (
               </div>
 
               {/* Cert image placeholder */}
-              <div className="mt-6 aspect-[4/3] rounded-lg border border-border/50 bg-background/50 flex items-center justify-center">
-                <p className="text-xs text-muted-foreground">Certificate image placeholder</p>
+              <div className="mt-6 rounded-lg border border-border/50 overflow-hidden">
+                <img src={c.image} alt={c.title} className="w-full h-auto object-cover" />
               </div>
             </div>
           </div>
