@@ -148,7 +148,12 @@ const ContactPage = () => {
                     placeholder="Tell us about your vehicle and what you need..."
                   />
                 </div>
-                <Button type="submit" className="w-full" size="lg">Send Message</Button>
+                <Button type="submit" className="w-full" size="lg" disabled={loading}>
+                  {loading ? "Sending..." : "Send Message"}
+                </Button>
+                <p className="text-xs text-muted-foreground text-center mt-3">
+                  Form submissions will be sent to lexproautospa@gmail.com
+                </p>
               </form>
             )}
           </div>
