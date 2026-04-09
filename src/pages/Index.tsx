@@ -84,9 +84,9 @@ const HomePage = () => {
                     animation: 'ctaGlow 3s ease-in-out infinite',
                   }}
                 />
-                <a href={SQUARE_BOOKING_URL} target="_blank" rel="noopener noreferrer" className="relative">
+                <Link to="/booking" className="relative">
                   <Button size="xl" variant="hero">Book Appointment</Button>
-                </a>
+                </Link>
               </div>
               <Link to="/services">
                 <Button size="xl" variant="ghost">View Services</Button>
