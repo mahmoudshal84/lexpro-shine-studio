@@ -9,7 +9,7 @@ const Booking = () => {
       if (e.data?.event === "calendly.event_scheduled") {
         gtag("event", "conversion", {
           send_to: "AW-18072008734/AJh9CNu-2ZwcEJ7ws6lD",
-          value: 1.0,
+          value: 486.0,
           currency: "USD",
         });
       }
