@@ -1,8 +1,24 @@
+import { useEffect } from "react";
 import { InlineWidget } from "react-calendly";
 import EditorialHeadline from "@/components/EditorialHeadline";
 import Eyebrow from "@/components/Eyebrow";
 
-const Booking = () => (
+const Booking = () => {
+  useEffect(() => {
+    const handleCalendlyEvent = (e: MessageEvent) => {
+      if (e.data?.event === "calendly.event_scheduled") {
+        gtag("event", "conversion", {
+          send_to: "AW-18072008734/AJh9CNu-2ZwcEJ7ws6lD",
+          value: 1.0,
+          currency: "USD",
+        });
+      }
+    };
+    window.addEventListener("message", handleCalendlyEvent);
+    return () => window.removeEventListener("message", handleCalendlyEvent);
+  }, []);
+
+  return (
   <main className="pt-32 pb-24">
     <section className="container text-center mb-12">
       <Eyebrow>Book Your Appointment</Eyebrow>
@@ -32,6 +48,7 @@ const Booking = () => (
       </div>
     </section>
   </main>
-);
+  );
+};
 
 export default Booking;
