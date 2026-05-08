@@ -33,14 +33,9 @@ const Booking = () => {
           <div className="w-20 h-20 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center">
             <CalendarDays className="w-10 h-10 text-primary" />
           </div>
-          <div className="space-y-3">
-            <p className="text-muted-foreground text-lg max-w-lg">
-              Select your service, choose a date and time, and our certified team will handle the rest.
-            </p>
-          </div>
           <Button
             size="lg"
-            className="glow-blue text-lg px-14 py-7"
+            className="glow-blue text-xl px-20 py-8"
             onClick={() => window.open(BOOKING_URL, "_blank")}
           >
             <CalendarDays className="w-5 h-5 mr-2" />
