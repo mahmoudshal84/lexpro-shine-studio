@@ -1,21 +1,16 @@
 import { useEffect } from "react";
-import { InlineWidget } from "react-calendly";
 import EditorialHeadline from "@/components/EditorialHeadline";
 import Eyebrow from "@/components/Eyebrow";
 
 const Booking = () => {
   useEffect(() => {
-    const handleCalendlyEvent = (e: MessageEvent) => {
-      if (e.data?.event === "calendly.event_scheduled") {
-        gtag("event", "conversion", {
-          send_to: "AW-18072008734/AJh9CNu-2ZwcEJ7ws6lD",
-          value: 486.0,
-          currency: "USD",
-        });
-      }
+    const script = document.createElement("script");
+    script.src = "https://square.site/appointments/buyer/widget/5pmjc7rmuniesf/LA10EDHAYA95N.js";
+    script.async = true;
+    document.body.appendChild(script);
+    return () => {
+      document.body.removeChild(script);
     };
-    window.addEventListener("message", handleCalendlyEvent);
-    return () => window.removeEventListener("message", handleCalendlyEvent);
   }, []);
 
   return (
@@ -33,19 +28,7 @@ const Booking = () => {
     </section>
 
     <section className="container max-w-5xl">
-      <div className="rounded-2xl overflow-hidden border border-border bg-card">
-        <InlineWidget
-          url="https://calendly.com/lexproautospa"
-          styles={{ minWidth: "320px", height: "700px" }}
-          pageSettings={{
-            backgroundColor: "0B0F14",
-            textColor: "F1F5F9",
-            primaryColor: "2563EB",
-            hideLandingPageDetails: false,
-            hideEventTypeDetails: false,
-          }}
-        />
-      </div>
+      <div className="rounded-2xl overflow-hidden border border-border bg-card min-h-[700px]" />
     </section>
   </main>
   );
