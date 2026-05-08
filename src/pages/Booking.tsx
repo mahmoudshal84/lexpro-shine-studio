@@ -35,7 +35,7 @@ const Booking = () => {
           </div>
           <Button
             size="lg"
-            className="glow-blue text-2xl px-28 py-10 h-auto"
+            className="glow-blue text-xl px-20 py-8"
             onClick={() => window.open(BOOKING_URL, "_blank")}
           >
             <CalendarDays className="w-5 h-5 mr-2" />
