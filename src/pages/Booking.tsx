@@ -29,7 +29,7 @@ const Booking = () => {
       </section>
 
       <section className="container max-w-4xl">
-        <div className="bg-background rounded-2xl p-16 flex flex-col items-center gap-10 text-center border border-border">
+        <div className="bg-background rounded-2xl p-16 flex flex-col items-center gap-10 text-center">
           <div className="w-20 h-20 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center">
             <CalendarDays className="w-10 h-10 text-primary" />
           </div>
