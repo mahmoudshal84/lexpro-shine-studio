@@ -82,9 +82,8 @@ const ContactPage = () => {
                 <Clock size={18} className="text-primary" /> Hours
               </h3>
               <div className="text-sm text-muted-foreground space-y-1">
-                <p>Monday – Thursday: 8:00 AM – 8:00 PM</p>
+                <p>Saturday – Thursday: 8:00 AM – 8:00 PM</p>
                 <p>Friday: 8:00 AM – 12:30 PM, 3:30 – 8:00 PM</p>
-                <p>Saturday – Sunday: 8:00 AM – 8:00 PM</p>
               </div>
             </div>
 
