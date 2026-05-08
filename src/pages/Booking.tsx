@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import EditorialHeadline from "@/components/EditorialHeadline";
 import Eyebrow from "@/components/Eyebrow";
 import { Button } from "@/components/ui/button";
-import { CalendarDays } from "lucide-react";
 
 const BOOKING_URL = "https://square.site/appointments/buyer/widget/5pmjc7rmuniesf/LA10EDHAYA95N";
 
@@ -30,15 +29,11 @@ const Booking = () => {
 
       <section className="container max-w-4xl">
         <div className="bg-background rounded-2xl p-16 flex flex-col items-center gap-10 text-center">
-          <div className="w-20 h-20 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center">
-            <CalendarDays className="w-10 h-10 text-primary" />
-          </div>
           <Button
             size="lg"
             className="glow-blue text-xl px-20 py-8"
             onClick={() => window.open(BOOKING_URL, "_blank")}
           >
-            <CalendarDays className="w-5 h-5 mr-2" />
             Book Your Appointment
           </Button>
           <p className="text-sm text-muted-foreground">
