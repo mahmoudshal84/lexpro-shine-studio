@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import EditorialHeadline from "@/components/EditorialHeadline";
 import Eyebrow from "@/components/Eyebrow";
 import { Button } from "@/components/ui/button";
@@ -6,6 +7,13 @@ import { CalendarDays } from "lucide-react";
 const BOOKING_URL = "https://square.site/appointments/buyer/widget/5pmjc7rmuniesf/LA10EDHAYA95N";
 
 const Booking = () => {
+  useEffect(() => {
+    // Remove any lingering Square widget script and injected elements
+    const script = document.getElementById("square-appointments-widget");
+    if (script) script.remove();
+    document.querySelectorAll('[id^="square"], [class*="sq-"], iframe[src*="square"]').forEach(el => el.remove());
+  }, []);
+
   return (
     <main className="pt-32 pb-24">
       <section className="container text-center mb-16">
