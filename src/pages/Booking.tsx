@@ -37,7 +37,7 @@ const Booking = () => {
             Book Your Appointment
           </Button>
           <p className="text-sm text-muted-foreground">
-            Mon – Fri: 8 AM – 6 PM &nbsp;·&nbsp; Sat: 9 AM – 4 PM &nbsp;·&nbsp; Sun: Closed
+            Mon – Thu & Sat – Sun: 8 AM – 8 PM &nbsp;·&nbsp; Fri: 8 AM – 12:30 PM, 3:30 – 8 PM
           </p>
         </div>
       </section>

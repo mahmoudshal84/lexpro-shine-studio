@@ -98,9 +98,8 @@ const Footer = () => (
             <div className="flex items-start gap-2.5 pt-1">
               <Clock size={14} className="text-primary shrink-0 mt-0.5" />
               <div className="leading-relaxed">
-                <p>Mon – Fri: 8 AM – 6 PM</p>
-                <p>Sat: 9 AM – 4 PM</p>
-                <p>Sun: Closed</p>
+                <p>Mon – Thu & Sat – Sun: 8 AM – 8 PM</p>
+                <p>Fri: 8 AM – 12:30 PM, 3:30 – 8 PM</p>
               </div>
             </div>
           </div>
