@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { BUSINESS, SQUARE_BOOKING_URL } from "@/lib/constants";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Instagram, Facebook } from "lucide-react";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -52,6 +52,12 @@ const Header = () => {
               {l.label}
             </Link>
           ))}
+          <a href="https://instagram.com/lexproautospa" target="_blank" rel="noopener noreferrer" className="ml-2 text-gray-400 hover:text-blue-400 transition-colors" aria-label="Instagram">
+            <Instagram size={18} />
+          </a>
+          <a href="https://facebook.com/lexproautospa" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors" aria-label="Facebook">
+            <Facebook size={18} />
+          </a>
           <Link to="/booking" className="ml-3">
             <Button size="sm">Book Now</Button>
           </Link>

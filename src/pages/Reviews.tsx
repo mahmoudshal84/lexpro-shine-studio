@@ -5,6 +5,15 @@ import DepthCard from "@/components/DepthCard";
 import { REVIEWS } from "@/lib/constants";
 import { Button } from "@/components/ui/button";
 
+const getInitials = (name: string) =>
+  name.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase();
+
+const ReviewerAvatar = ({ name }: { name: string }) => (
+  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center shrink-0">
+    <span className="text-white text-xs font-bold">{getInitials(name)}</span>
+  </div>
+);
+
 const PER_PAGE = 6;
 
 const ReviewsPage = () => {
@@ -65,9 +74,12 @@ const ReviewsPage = () => {
               <StarRating rating={r.rating} />
               <p className="text-sm text-muted-foreground mt-4 mb-4 leading-relaxed italic">"{r.text}"</p>
               <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-semibold text-foreground text-sm">{r.name}</p>
-                  <p className="text-xs text-muted-foreground">{r.service}</p>
+                <div className="flex items-center gap-3">
+                  <ReviewerAvatar name={r.name} />
+                  <div>
+                    <p className="font-semibold text-foreground text-sm">{r.name}</p>
+                    <p className="text-xs text-muted-foreground">{r.service}</p>
+                  </div>
                 </div>
                 <span className="text-xs text-muted-foreground">{r.date}</span>
               </div>

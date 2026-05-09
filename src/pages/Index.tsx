@@ -4,13 +4,40 @@ import StarRating from "@/components/StarRating";
 import EditorialHeadline from "@/components/EditorialHeadline";
 import DepthCard from "@/components/DepthCard";
 import Eyebrow from "@/components/Eyebrow";
-import { BUSINESS, SQUARE_BOOKING_URL, SERVICES, REVIEWS } from "@/lib/constants";
-import { Shield, Droplets, Paintbrush, SprayCan, Car, Sparkles, ArrowRight } from "lucide-react";
+import { BUSINESS, SERVICES, REVIEWS } from "@/lib/constants";
+import {
+  Shield, Sparkles, Sofa, Car, Star, ArrowRight,
+  Award, BadgeCheck, Instagram, Facebook, MapPin, Phone, Clock,
+} from "lucide-react";
 import heroImg from "@/assets/hero-car.jpg";
 
 const serviceIcons: Record<string, React.ReactNode> = {
-  package: <Sparkles size={28} />,
+  "Maintenance Detail": <Sparkles size={28} />,
+  "Interior Deep Detail": <Sofa size={28} />,
+  "Exterior Detail": <Car size={28} />,
+  "Full Detail (Most Popular)": <Star size={28} />,
 };
+
+const getInitials = (name: string) =>
+  name.split(" ").map((n) => n[0]).join("").slice(0, 2).toUpperCase();
+
+const ReviewerAvatar = ({ name }: { name: string }) => (
+  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center shrink-0">
+    <span className="text-white text-xs font-bold">{getInitials(name)}</span>
+  </div>
+);
+
+const ServiceImagePlaceholder = ({ name }: { name: string }) => (
+  <div
+    className="aspect-video rounded-lg mb-4 flex flex-col items-center justify-center gap-1"
+    style={{ background: "#1a1f2e" }}
+  >
+    <span className="text-lg">📷</span>
+    <span className="text-xs text-muted-foreground text-center px-4">
+      {name} — Photo coming soon
+    </span>
+  </div>
+);
 
 const HomePage = () => {
   const featuredServices = SERVICES.slice(0, 4);
@@ -20,68 +47,66 @@ const HomePage = () => {
     <main>
       {/* HERO */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Parallax background image */}
-        <div className="absolute inset-0 scale-110" style={{ willChange: 'transform' }}>
+        <div className="absolute inset-0 scale-110" style={{ willChange: "transform" }}>
           <img
             src={heroImg}
             alt="Premium auto detailing"
             className="w-full h-full object-cover"
             width={1920}
             height={1080}
-            style={{ animation: 'heroParallax 20s ease-in-out infinite alternate' }}
+            style={{ animation: "heroParallax 20s ease-in-out infinite alternate" }}
           />
         </div>
-        {/* Dark overlays */}
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/50" />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-background/40" />
-        {/* Noise grain overlay */}
         <div
           className="absolute inset-0 z-[1] opacity-[0.03] mix-blend-overlay pointer-events-none"
           style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
-            backgroundRepeat: 'repeat',
-            backgroundSize: '256px 256px',
+            backgroundRepeat: "repeat",
+            backgroundSize: "256px 256px",
           }}
         />
-
-        {/* Horizontal light streak */}
         <div
           className="absolute left-0 right-0 h-[1px] top-[45%] z-[5]"
           style={{
-            background: 'linear-gradient(90deg, transparent 0%, transparent 10%, hsl(var(--accent) / 0.4) 30%, hsl(var(--primary-foreground) / 0.6) 50%, hsl(var(--accent) / 0.4) 70%, transparent 90%, transparent 100%)',
-            animation: 'lightStreak 4s ease-in-out infinite',
+            background: "linear-gradient(90deg, transparent 0%, transparent 10%, hsl(var(--accent) / 0.4) 30%, hsl(var(--primary-foreground) / 0.6) 50%, hsl(var(--accent) / 0.4) 70%, transparent 90%, transparent 100%)",
+            animation: "lightStreak 4s ease-in-out infinite",
           }}
         />
         <div
           className="absolute left-0 right-0 h-[3px] top-[45%] z-[4] blur-sm"
           style={{
-            background: 'linear-gradient(90deg, transparent 0%, transparent 15%, hsl(var(--primary) / 0.3) 35%, hsl(var(--accent) / 0.2) 50%, hsl(var(--primary) / 0.3) 65%, transparent 85%, transparent 100%)',
-            animation: 'lightStreak 4s ease-in-out infinite',
+            background: "linear-gradient(90deg, transparent 0%, transparent 15%, hsl(var(--primary) / 0.3) 35%, hsl(var(--accent) / 0.2) 50%, hsl(var(--primary) / 0.3) 65%, transparent 85%, transparent 100%)",
+            animation: "lightStreak 4s ease-in-out infinite",
           }}
         />
-
-        {/* Content */}
         <div className="container relative z-10 pt-24 pb-20">
           <div className="max-w-2xl">
             <Eyebrow className="animate-fade-in">Premium Auto Care</Eyebrow>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+            <h1
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.05] mb-6 animate-fade-in"
+              style={{ animationDelay: "0.1s" }}
+            >
               <span className="font-black tracking-tight">LexPro</span>
               <span className="font-light tracking-normal text-foreground/90"> — Lexington's Premier</span>
               <br />
               <span className="gradient-text font-black">Auto Detailing</span>{" "}
               <span className="font-light tracking-normal text-foreground/90">Studio</span>
             </h1>
-            <p className="text-lg md:text-xl text-silver leading-relaxed mb-10 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            <p
+              className="text-lg md:text-xl text-silver leading-relaxed mb-10 animate-fade-in"
+              style={{ animationDelay: "0.2s" }}
+            >
               Ceramic coatings, paint correction, and full detail packages — done right.
             </p>
             <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: "0.3s" }}>
-              {/* CTA with pulsing gradient glow */}
               <div className="relative group">
                 <div
                   className="absolute -inset-1 rounded-xl opacity-60 blur-lg group-hover:opacity-80 transition-opacity duration-500"
                   style={{
-                    background: 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)))',
-                    animation: 'ctaGlow 3s ease-in-out infinite',
+                    background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)))",
+                    animation: "ctaGlow 3s ease-in-out infinite",
                   }}
                 />
                 <Link to="/booking" className="relative">
@@ -111,11 +136,11 @@ const HomePage = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
             {[
-              { title: "Jade Ceramic Authorized Installer 2026", sub: "Certified Installer" },
-              { title: "Certified Detailer – The Detail Czar", sub: "Professional License" },
+              { title: "Jade Ceramic Authorized Installer 2026", sub: "Certified Installer", icon: <Award className="mx-auto text-gold mb-3" size={28} /> },
+              { title: "Certified Detailer – The Detail Czar", sub: "Professional License", icon: <BadgeCheck className="mx-auto text-gold mb-3" size={28} /> },
             ].map((cert) => (
               <div key={cert.title} className="glass rounded-xl p-6 text-center card-hover">
-                <Shield className="mx-auto text-gold mb-3" size={28} />
+                {cert.icon}
                 <h3 className="font-bold text-foreground mb-1">{cert.title}</h3>
                 <p className="text-sm text-muted-foreground">{cert.sub}</p>
               </div>
@@ -134,18 +159,24 @@ const HomePage = () => {
                 { text: "Services", weight: "bold", accent: true },
               ]}
             />
-            <p className="text-muted-foreground max-w-lg mx-auto mt-4">From basic washes to premium ceramic coatings, we deliver perfection at every level.</p>
+            <p className="text-muted-foreground max-w-lg mx-auto mt-4">
+              From basic washes to premium ceramic coatings, we deliver perfection at every level.
+            </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {featuredServices.map((s) => (
               <DepthCard key={s.name}>
+                <ServiceImagePlaceholder name={s.name} />
                 <div className="text-primary mb-4 group-hover:text-accent transition-colors">
-                  {serviceIcons[s.category] || <Sparkles size={28} />}
+                  {serviceIcons[s.name] || <Sparkles size={28} />}
                 </div>
                 <h3 className="font-bold text-lg mb-1 text-foreground">{s.name}</h3>
                 <p className="text-accent font-semibold text-sm mb-2">{s.price}</p>
                 <p className="text-sm text-muted-foreground leading-relaxed mb-4">{s.description}</p>
-                <Link to="/services" className="text-sm font-medium text-primary hover:text-accent transition-colors inline-flex items-center gap-1">
+                <Link
+                  to="/services"
+                  className="text-sm font-medium text-primary hover:text-accent transition-colors inline-flex items-center gap-1"
+                >
                   Learn More <ArrowRight size={14} />
                 </Link>
               </DepthCard>
@@ -155,6 +186,42 @@ const HomePage = () => {
             <Link to="/services">
               <Button variant="outline" size="lg">View All Services</Button>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* BEFORE / AFTER */}
+      <section className="py-16 md:py-24 border-t border-border">
+        <div className="container">
+          <div className="text-center mb-10">
+            <EditorialHeadline
+              segments={[
+                { text: "See The ", weight: "light" },
+                { text: "Difference", weight: "bold", accent: true },
+              ]}
+            />
+            <p className="text-muted-foreground mt-3">Real results from real Lexington vehicles.</p>
+          </div>
+          <div className="flex rounded-2xl overflow-hidden max-w-4xl mx-auto border border-border">
+            <div
+              className="flex-1 aspect-video relative flex items-center justify-center"
+              style={{ background: "#1a1f2e" }}
+            >
+              <span className="absolute top-3 left-3 bg-red-500/80 text-white text-xs font-bold px-3 py-1 rounded-full">
+                Before
+              </span>
+              <span className="text-muted-foreground text-sm">📷 Photo coming soon</span>
+            </div>
+            <div className="w-[2px] shrink-0 bg-primary" />
+            <div
+              className="flex-1 aspect-video relative flex items-center justify-center"
+              style={{ background: "#1a1f2e" }}
+            >
+              <span className="absolute top-3 right-3 bg-primary/80 text-white text-xs font-bold px-3 py-1 rounded-full">
+                After
+              </span>
+              <span className="text-muted-foreground text-sm">📷 Photo coming soon</span>
+            </div>
           </div>
         </div>
       </section>
@@ -181,9 +248,12 @@ const HomePage = () => {
               <DepthCard key={r.name}>
                 <StarRating rating={r.rating} />
                 <p className="text-sm text-muted-foreground mt-4 mb-4 leading-relaxed italic">"{r.text}"</p>
-                <div>
-                  <p className="font-semibold text-foreground text-sm">{r.name}</p>
-                  <p className="text-xs text-muted-foreground">{r.service} · {r.date}</p>
+                <div className="flex items-center gap-3">
+                  <ReviewerAvatar name={r.name} />
+                  <div>
+                    <p className="font-semibold text-foreground text-sm">{r.name}</p>
+                    <p className="text-xs text-muted-foreground">{r.service} · {r.date}</p>
+                  </div>
                 </div>
               </DepthCard>
             ))}
@@ -215,6 +285,55 @@ const HomePage = () => {
           <Link to="/about">
             <Button variant="outline" size="lg">Learn More About Us</Button>
           </Link>
+        </div>
+      </section>
+
+      {/* VISIT OUR STUDIO */}
+      <section className="py-16 md:py-24 border-t border-border bg-card/20">
+        <div className="container">
+          <div className="text-center mb-12">
+            <EditorialHeadline
+              segments={[
+                { text: "Visit Our ", weight: "light" },
+                { text: "Studio", weight: "bold", accent: true },
+              ]}
+            />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center max-w-5xl mx-auto">
+            <div
+              className="rounded-2xl flex flex-col items-center justify-center gap-2 border border-border"
+              style={{ background: "#1a1f2e", aspectRatio: "4/3" }}
+            >
+              <span className="text-2xl">📷</span>
+              <span className="text-sm text-muted-foreground">Storefront photo coming soon</span>
+            </div>
+            <div className="space-y-5 text-sm text-muted-foreground">
+              <div className="flex items-start gap-3">
+                <MapPin size={16} className="text-primary shrink-0 mt-0.5" />
+                <span className="text-foreground font-medium">305 E High St, Lexington, KY 40507</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <Clock size={16} className="text-primary shrink-0 mt-0.5" />
+                <div className="leading-relaxed">
+                  <p>Sun – Thu &amp; Sat: 8 AM – 8 PM</p>
+                  <p>Fri: 8 AM – 12:30 PM &amp; 3:30 – 8 PM</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <Phone size={16} className="text-primary shrink-0" />
+                <a href={BUSINESS.phoneHref} className="hover:text-accent transition-colors">
+                  {BUSINESS.phone}
+                </a>
+              </div>
+              <a
+                href="https://maps.google.com/?q=305+E+High+St+Lexington+KY+40507"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="mt-2 glow-blue">Get Directions</Button>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </main>

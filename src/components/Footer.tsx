@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { BUSINESS } from "@/lib/constants";
-import { Phone, MapPin, Clock, Mail } from "lucide-react";
+import { Phone, MapPin, Clock, Mail, Instagram, Facebook } from "lucide-react";
 
 const navLinks = [
   { label: "Home", to: "/" },
@@ -43,6 +43,14 @@ const Footer = () => (
           <p className="text-sm text-muted-foreground leading-relaxed mb-6 max-w-xs">
             Certified professionals delivering showroom-quality results. Ceramic coatings, paint correction, and premium detailing in Lexington, KY.
           </p>
+          <div className="flex items-center gap-3 mb-4">
+            <a href="https://instagram.com/lexproautospa" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors" aria-label="Instagram">
+              <Instagram size={18} />
+            </a>
+            <a href="https://facebook.com/lexproautospa" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors" aria-label="Facebook">
+              <Facebook size={18} />
+            </a>
+          </div>
           <Link
             to="/booking"
             className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-accent transition-colors"
